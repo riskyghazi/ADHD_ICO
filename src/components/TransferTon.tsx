@@ -172,8 +172,12 @@ export function TransferTon() {
         value: toNano(tonAmount),
       });
       // Handle successful transfer
-    } catch (err) {
-      setError(`Transfer failed: ${err.message}`);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(`Transfer failed: ${err.message}`);
+      } else {
+        setError('An unknown error occurred during transfer');
+      }
     } finally {
       setIsLoading(false);
     }
