@@ -5,7 +5,7 @@ import { useTonConnect } from "../hooks/useTonConnect";
 import { FlexBoxCol, FlexBoxRow, Button, Input } from "./styled/styled";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import React from 'react';
-import logoImage from '../assets/logoalphadhad.png'; // Updated filename
+import logo from "../assets/logoalphadhad.png"; // Updated filename
 
 // Modify the imported Card component
 const CenteredContainer = styled.div`
@@ -186,7 +186,7 @@ export function TransferTon() {
   return (
     <PageContainer>
       <LogoContainer>
-        <Logo src={logoImage} alt="Alphadhad Logo" />
+        <Logo src={logo} alt="Alphadhad Logo" />
       </LogoContainer>
       <ContentContainer>
         <SubHeadline>طريقة المشاركة في الاكتتاب</SubHeadline>
