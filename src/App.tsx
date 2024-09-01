@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
 import { useTonConnect } from "./hooks/useTonConnect";
 import "@twa-dev/sdk";
+import { useEffect } from 'react';
 
 const StyledApp = styled.div`
   background-color: #e8e8e8;
@@ -31,6 +32,14 @@ const Container = styled.div`
 `;
 
 function App() {
+  useEffect(() => {
+    const tg = window.Telegram.WebApp;
+    if (tg) {
+      tg.expand(); // Expand to the maximum available height
+      tg.ready(); // Notify Telegram that the Web App is ready
+    }
+  }, []);
+
   useTonConnect();
 
   return (

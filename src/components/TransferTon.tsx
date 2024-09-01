@@ -24,24 +24,19 @@ const ConnectButtonContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  width: 150%;
+  width: 120%;
   display: flex;
   justify-content: center;
 `;
 
 const StyledCard = styled.div`
-  width: 95%;
-  max-width: 600px;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 9px rgba(0, 0, 0, 0.1);
-  background-color: #222222; // Changed to black
-  color: #ffffff; // Set text color to white for better readability on black background
-
-  @media (max-width: 480px) {
-    padding: 22px;
-    width: 90%;
-  }
+  width: 80%; // This makes it take the full width of its parent
+  max-width: 600px; // This ensures it doesn't get too wide on larger screens
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
 `;
 
 const FIXED_RECIPIENT = "UQCW--Dtb8jK3ikAWtl_7Jo5Je7cic1B0euWI8bxYSyEc6HY";
@@ -129,11 +124,16 @@ const BulletPoint = styled.li`
 `;
 
 const PageContainer = styled.div`
+  min-height: 100vh;
+  background: #000000; // Solid black background
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  align-items: center;
   padding: 20px;
-  box-sizing: border-box;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  width: 100%; // Ensure PageContainer takes full width
+  box-sizing: border-box; // This ensures padding doesn't add to the width
 `;
 
 const DisclaimerLink = styled.a`
@@ -143,6 +143,14 @@ const DisclaimerLink = styled.a`
   cursor: pointer;
   font-size: 16px;
   text-align: center;
+`;
+
+const TextContainer = styled.div`
+  color: ${props => props.theme.mode === 'dark' ? '#ffffff' : '#000000'};
+  background-color: ${props => props.theme.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(255, 255, 255, 0.5)'};
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 `;
 
 export function TransferTon() {
@@ -234,6 +242,9 @@ export function TransferTon() {
           </StyledCard>
         </CardContainer>
       </CenteredContainer>
+      <TextContainer>
+        {/* Your Arabic text here */}
+      </TextContainer>
       <DisclaimerLink href="https://www.alphadhad.com/disclaimer" target="_blank" rel="noopener noreferrer">
         Disclaimer
       </DisclaimerLink>
