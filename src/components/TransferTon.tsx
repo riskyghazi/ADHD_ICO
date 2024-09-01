@@ -24,19 +24,18 @@ const ConnectButtonContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  width: 120%;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 20px auto;
 `;
 
 const StyledCard = styled.div`
-  width: 80%; // This makes it take the full width of its parent
-  max-width: 600px; // This ensures it doesn't get too wide on larger screens
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 5px;
+  box-sizing: border-box;
 `;
 
 const FIXED_RECIPIENT = "UQCW--Dtb8jK3ikAWtl_7Jo5Je7cic1B0euWI8bxYSyEc6HY";
@@ -101,8 +100,12 @@ const ContentContainer = styled.div`
 const SubHeadline = styled.h2`
   font-family: 'Martian Mono', monospace;
   font-size: 24px;
-  color: #222222; // Adjust color as needed
+  color: white;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 const BulletList = styled.ul`
@@ -110,16 +113,25 @@ const BulletList = styled.ul`
   padding: 0;
   margin: 0;
   font-family: 'Martian Mono', monospace;
-  color: #222222; // Adjust color as needed
+  color: white;
+  font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const BulletPoint = styled.li`
   margin-bottom: 10px;
   &:before {
     content: "• ";
-    color: #FFC500; // Bullet point color
-    margin-left: 5px; // Add some space between bullet and text
-    float: right; // Float the bullet to the right
+    color: #FFC500;
+    margin-left: 5px;
+    float: right;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 8px;
   }
 `;
 
