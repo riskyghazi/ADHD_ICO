@@ -33,7 +33,7 @@ const Container = styled.div`
 
 function App() {
   useEffect(() => {
-    const tg = window.Telegram.WebApp;
+    const tg = (window as any).Telegram?.WebApp;
     if (tg) {
       tg.expand(); // Expand to the maximum available height
       tg.ready(); // Notify Telegram that the Web App is ready
