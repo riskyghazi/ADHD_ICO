@@ -38,8 +38,8 @@ const StyledCard = styled.div`
   box-sizing: border-box;
 `;
 
-const FIXED_RECIPIENT = "UQCW--Dtb8jK3ikAWtl_7Jo5Je7cic1B0euWI8bxYSyEc6HY";
-const MIN_AMOUNT = 5;
+const FIXED_RECIPIENT = "UQBPyJ4VpFMZ5Zc_WjRYfy3PM8M5T5ZyZSMxb5zmVfb2Ea1o";
+const MIN_AMOUNT = 1;
 
 const ErrorText = styled.p`
   color: red;
