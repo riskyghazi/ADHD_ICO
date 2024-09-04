@@ -56,7 +56,7 @@ const Headline = styled.h2`
   text-align: center;
   color: #FFC500;
   margin-bottom: 15px; // Increased from 10px
-  font-size: 28px; // Increased from default
+  font-size: 22px; // Increased from default
 `;
 
 const FlexContainer = styled.div`
@@ -80,10 +80,10 @@ const InputWrapper = styled.div`
 `;
 
 const StyledInput = styled(Input)`
-  flex: 1;
-  font-size: 16px;
+  flex: 0.8;
+  font-size: 14px;
   padding: 8px;
-  margin-right: 5px;
+  margin-right: 24px;
 `;
 
 const UnitLabel = styled.span`
@@ -131,7 +131,7 @@ const ContentContainer = styled.div`
 
 const SubHeadline = styled.h2`
   font-family: 'Martian Mono', monospace;
-  font-size: 24px;
+  font-size: 14px;
   color: white;
   margin-bottom: 20px;
 
