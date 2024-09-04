@@ -1211,7 +1211,7 @@ Values:
   text-align: center;
   color: #FFC500;
   margin-bottom: 15px; // Increased from 10px
-  font-size: 28px; // Increased from default
+  font-size: 22px; // Increased from default
 `,Vle=Zt.div`
   display: flex;
   align-items: center;
@@ -1227,10 +1227,10 @@ Values:
   align-items: center;
   flex: 1;
 `,Yle=Zt(jle)`
-  flex: 1;
-  font-size: 16px;
+  flex: 0.8;
+  font-size: 14px;
   padding: 8px;
-  margin-right: 5px;
+  margin-right: 24px;
 `,Qle=Zt.span`
   font-size: 16px;
   white-space: nowrap;
@@ -1261,7 +1261,7 @@ Values:
   direction: rtl; // Added RTL direction
 `,kS=Zt.h2`
   font-family: 'Martian Mono', monospace;
-  font-size: 24px;
+  font-size: 14px;
   color: white;
   margin-bottom: 20px;
 
