@@ -17,16 +17,21 @@ const CenteredContainer = styled.div`
 `;
 
 const ConnectButtonContainer = styled.div`
-  margin-bottom: 5px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   width: 100%;
+  z-index: 1;
 `;
 
 const CardContainer = styled.div`
   width: 100%;
-  max-width: 100%;
+  max-width: 400px;
   margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const StyledCard = styled.div`
@@ -54,30 +59,57 @@ const Headline = styled.h2`
   font-size: 28px; // Increased from default
 `;
 
-const FlexContainer = styled(FlexBoxRow)`
-  margin-bottom: 15px; // Added for spacing
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+`;
 
-  @media (max-width: 480px) {
-    flex-direction: column;
-    align-items: stretch;
-  }
+const InputLabel = styled.label`
+  font-size: 16px;
+  margin-right: 10px;
+  white-space: nowrap;
+  min-width: 70px;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
 `;
 
 const StyledInput = styled(Input)`
-  font-size: 18px; // Increased font size
-  padding: 10px; // Added padding
-
-  @media (max-width: 480px) {
-    margin-right: 0;
-    margin-top: 12px; // Increased from 8px
-  }
+  flex: 1;
+  font-size: 16px;
+  padding: 8px;
+  margin-right: 5px;
 `;
 
+const UnitLabel = styled.span`
+  font-size: 16px;
+  white-space: nowrap;
+`;
+
+const AddressContainer = styled.div`
+  font-size: 14px;
+  word-break: break-all;
+  margin-bottom: 15px;
+`;
+
+const AddressLabel = styled.span`
+  font-weight: bold;
+  margin-right: 5px;
+`;
+
+const AddressValue = styled.span`
+  font-family: monospace;
+`;
 const StyledButton = styled(Button)`
-  min-height: 54px; // Increased from 44px
-  padding: 12px 20px; // Increased from 10px 15px
-  font-size: 18px; // Increased font size
-  margin-top: 20px; // Added for spacing
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 10px;
 `;
 
 const LogoContainer = styled.div`
@@ -137,15 +169,25 @@ const BulletPoint = styled.li`
 
 const PageContainer = styled.div`
   min-height: 100vh;
-  background: #000000; // Solid black background
+  background: #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 0; // Remove padding
   color: white;
   font-family: 'Arial', sans-serif;
-  width: 100%; // Ensure PageContainer takes full width
-  box-sizing: border-box; // This ensures padding doesn't add to the width
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; // Add padding here
 `;
 
 const DisclaimerLink = styled.a`
@@ -164,6 +206,11 @@ const TextContainer = styled.div`
   border-radius: 8px;
   margin-bottom: 20px;
 `;
+
+const formatAddress = (address: string) => {
+  if (address.length <= 8) return address;
+  return `${address.slice(0, 4)}....${address.slice(-4)}`;
+};
 
 export function TransferTon() {
   const { sender, connected } = useTonConnect();
@@ -205,58 +252,51 @@ export function TransferTon() {
 
   return (
     <PageContainer>
-      <LogoContainer>
-        <Logo src={logo} alt="Alphadhad Logo" />
-      </LogoContainer>
-      <ContentContainer>
-        <SubHeadline>طريقة المشاركة في الاكتتاب</SubHeadline>
-        <BulletList>
-          <BulletPoint>اضغط Connect Wallet في الاسفل وقم بربط محفظتك</BulletPoint>
-          <BulletPoint>ادخل الكمية التي تريد المشاركة بها من عملة TON علما ان الحد الادنى هو 20 TON</BulletPoint>
-          <BulletPoint>اضغط على Transfer وقم بتأكيد المعاملة من محفظتك</BulletPoint>
-        </BulletList>
-      </ContentContainer>
-      <CenteredContainer>
+      <ContentWrapper>
+        <LogoContainer>
+          <Logo src={logo} alt="Alphadhad Logo" />
+        </LogoContainer>
+        <ContentContainer>
+          <SubHeadline>طريقة المشاركة في الاكتتاب</SubHeadline>
+          <BulletList>
+            <BulletPoint>اضغط Connect Wallet في الاسفل وقم بربط محفظتك</BulletPoint>
+            <BulletPoint>ادخل الكمية التي تريد المشاركة بها من عملة TON علما ان الحد الادنى هو 20 TON</BulletPoint>
+            <BulletPoint>اضغط على Transfer وقم بتأكيد المعاملة من محفظتك</BulletPoint>
+          </BulletList>
+        </ContentContainer>
+        
         <ConnectButtonContainer>
           <TonConnectButton />
         </ConnectButtonContainer>
+        
         <CardContainer>
-          <StyledCard>
-            <FlexBoxCol>
-              <Headline>Alphadhad $ADHD Pre-sale</Headline>
-              <h3 style={{ fontSize: '22px', marginBottom: '15px' }}>Transfer TON</h3>
-              <FlexContainer>
-                <label style={{ fontSize: '18px' }}>Amount </label>
-                <div style={{ display: 'flex', alignItems: 'center', width: '50%' }}>
-                  <Input
-                    type="number"
-                    value={tonAmount}
-                    onChange={(e) => setTonAmount(e.target.value)}
-                    min={MIN_AMOUNT}
-                    style={{ width: '50%', fontSize: '18px', padding: '10px' }}
-                  />
-                  <span style={{ marginLeft: '10px', fontSize: '18px', whiteSpace: 'nowrap' }}>$TON</span>
-                </div>
-              </FlexContainer>
-              {error && <ErrorText>{error}</ErrorText>}
-              <FlexBoxRow style={{ marginBottom: '15px' }}>
-                <label style={{ fontSize: '18px' }}>
-                  To: <span style={{ fontSize: '80%' }}>{FIXED_RECIPIENT}</span>
-                </label>
-              </FlexBoxRow>
-              <StyledButton
-                disabled={!connected || !!error || isLoading}
-                onClick={handleTransfer}
-              >
-                {isLoading ? "Processing..." : "Transfer"}
-              </StyledButton>
-            </FlexBoxCol>
-          </StyledCard>
+          <Headline>Alphadhad $ADHD Pre-sale</Headline>
+          <SubHeadline>Transfer TON</SubHeadline>
+          <FlexContainer>
+            <InputLabel>Amount</InputLabel>
+            <InputWrapper>
+              <StyledInput
+                type="number"
+                value={tonAmount}
+                onChange={(e) => setTonAmount(e.target.value)}
+                min={MIN_AMOUNT}
+              />
+              <UnitLabel>$TON</UnitLabel>
+            </InputWrapper>
+          </FlexContainer>
+          {error && <ErrorText>{error}</ErrorText>}
+          <AddressContainer>
+            <AddressLabel>To:</AddressLabel>
+            <AddressValue title={FIXED_RECIPIENT}>{formatAddress(FIXED_RECIPIENT)}</AddressValue>
+          </AddressContainer>
+          <StyledButton
+            disabled={!connected || !!error || isLoading}
+            onClick={handleTransfer}
+          >
+            {isLoading ? "Processing..." : "Transfer"}
+          </StyledButton>
         </CardContainer>
-      </CenteredContainer>
-      <TextContainer>
-        {/* Your Arabic text here */}
-      </TextContainer>
+      </ContentWrapper>
       <DisclaimerLink href="https://www.alphadhad.com/disclaimer" target="_blank" rel="noopener noreferrer">
         Disclaimer
       </DisclaimerLink>

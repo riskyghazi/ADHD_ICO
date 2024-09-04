@@ -6,6 +6,7 @@ import { FlexBoxCol, FlexBoxRow } from "./components/styled/styled";
 import { useTonConnect } from "./hooks/useTonConnect";
 import "@twa-dev/sdk";
 import { useEffect } from 'react';
+import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 const StyledApp = styled.div`
   background-color: #e8e8e8;
@@ -26,8 +27,8 @@ const AppContainer = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  margin: 0 auto;
-  padding: 0 15px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 `;
 
@@ -43,11 +44,13 @@ function App() {
   useTonConnect();
 
   return (
-    <Container>
-      <AppContainer>
-        <TransferTon />
-      </AppContainer>
-    </Container>
+    <TonConnectUIProvider manifestUrl="https://your-manifest-url.json">
+      <Container>
+        <AppContainer>
+          <TransferTon />
+        </AppContainer>
+      </Container>
+    </TonConnectUIProvider>
   );
 }
 
