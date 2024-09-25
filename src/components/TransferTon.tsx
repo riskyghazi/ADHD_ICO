@@ -270,7 +270,7 @@ export function TransferTon() {
         </ConnectButtonContainer>
         
         <CardContainer>
-          <Headline>Alphadhad $ADHD Pre-sale</Headline>
+          <Headline>Alphadhad $AX Pre-sale</Headline>
           <SubHeadline>Transfer TON</SubHeadline>
           <FlexContainer>
             <InputLabel>Amount</InputLabel>
